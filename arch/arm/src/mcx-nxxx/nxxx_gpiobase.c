@@ -32,7 +32,7 @@
  * Public Data
  ****************************************************************************/
 
-#if defined(CONFIG_ARCH_CHIP_N236)
+#if defined(CONFIG_ARCH_CHIP_N236) || defined(CONFIG_ARCH_CHIP_N947)
 /* Base address for the GPIO memory mapped registers */
 
 const uintptr_t g_gpio_base[] =
