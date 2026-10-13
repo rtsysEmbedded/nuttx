@@ -16,6 +16,14 @@ config ARCH_CHIP_N236
 	select ARCH_HAVE_RESET
 	select ARMV8M_HAVE_ICACHE
 
+config ARCH_CHIP_N947
+	bool "MCXN947 Processor"
+	select ARCH_HAVE_RESET
+	select ARMV8M_HAVE_ICACHE
+	---help---
+		NXP MCXN947: dual Cortex-M33 (NuttX runs on CPU0 only), 2 MB
+		flash, 512 KB SRAM.
+
 endchoice # MCX NXXx Chip Selection
 
 endmenu # "MCX NXXx Chip Selection"

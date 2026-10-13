@@ -365,7 +365,7 @@
 #define SCG_APLLCTRL_FRM(x)                      (((x) << SCG_APLLCTRL_FRM_SHIFT) & SCG_APLLCTRL_FRM_MASK)
 
 #define SCG_APLLCTRL_SOURCE_SHIFT                (25)
-#define SCG_APLLCTRL_SOURCE_MASK                 (0x01 << SCG_APLLCTRL_SOURCE_SHIFT)
+#define SCG_APLLCTRL_SOURCE_MASK                 (0x03 << SCG_APLLCTRL_SOURCE_SHIFT)
 #define SCG_APLLCTRL_SOURCE(x)                   (((x) << SCG_APLLCTRL_SOURCE_SHIFT) & SCG_APLLCTRL_SOURCE_MASK)
 
 /* APLL Status Register */
