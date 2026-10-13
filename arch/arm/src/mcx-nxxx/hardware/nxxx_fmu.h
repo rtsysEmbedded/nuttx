@@ -68,7 +68,7 @@
 #define FMU_FSTAT_CWSABT(x)                      (((x) << FMU_FSTAT_CWSABT_SHIFT) & FMU_FSTAT_CWSABT_MASK)
 
 #define FMU_FSTAT_CCIF_SHIFT                     (7)
-#define FMU_FSTAT_CCIF_MASK                      (0x01)
+#define FMU_FSTAT_CCIF_MASK                      (0x01 << FMU_FSTAT_CCIF_SHIFT)
 #define FMU_FSTAT_CCIF(x)                        (((x) << FMU_FSTAT_CCIF_SHIFT) & FMU_FSTAT_CCIF_MASK)
 
 #define FMU_FSTAT_CMDPRT_SHIFT                   (8)
@@ -128,11 +128,11 @@
 #define FMU_FCTRL_RWSC(x)                        (((x) << FMU_FCTRL_RWSC_SHIFT) & FMU_FCTRL_RWSC_MASK)
 
 #define FMU_FCTRL_FDFD_SHIFT                     (16)
-#define FMU_FCTRL_FDFD_MASK                      (0x01)
+#define FMU_FCTRL_FDFD_MASK                      (0x01 << FMU_FCTRL_FDFD_SHIFT)
 #define FMU_FCTRL_FDFD(x)                        (((x) << FMU_FCTRL_FDFD_SHIFT) & FMU_FCTRL_FDFD_MASK)
 
 #define FMU_FCTRL_ABTREQ_SHIFT                   (24)
-#define FMU_FCTRL_ABTREQ_MASK                    (0x01)
+#define FMU_FCTRL_ABTREQ_MASK                    (0x01 << FMU_FCTRL_ABTREQ_SHIFT)
 #define FMU_FCTRL_ABTREQ(x)                      (((x) << FMU_FCTRL_ABTREQ_SHIFT) & FMU_FCTRL_ABTREQ_MASK)
 
 /* Flash Common Command Object Registers (FCCOB) */

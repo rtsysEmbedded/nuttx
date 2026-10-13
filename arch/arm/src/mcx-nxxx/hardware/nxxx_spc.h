@@ -64,8 +64,8 @@
 #define SPC_SC_BUSY(x)                           (((x) << SPC_SC_BUSY_SHIFT) & SPC_SC_BUSY_MASK)
 
 #define SPC_SC_SPC_LP_REQ_SHIFT                  (1)
-#define SPC_SC_SPC_LP_REQ_MASK                   (0x01 < SPC_SC_SPC_LP_REQ_SHIFT)
-#define SPC_SC_SPC_LP_REQ(x)                     ((((x) << SPC_SC_SPC_LP_REQ_SHIFT) & SPC_SC_SPC_LP_REQ_MASK)
+#define SPC_SC_SPC_LP_REQ_MASK                   (0x01 << SPC_SC_SPC_LP_REQ_SHIFT)
+#define SPC_SC_SPC_LP_REQ(x)                     (((x) << SPC_SC_SPC_LP_REQ_SHIFT) & SPC_SC_SPC_LP_REQ_MASK)
 
 #define SPC_SC_SPC_LP_MODE_SHIFT                 (4)
 #define SPC_SC_SPC_LP_MODE_MASK                  (0x0f << SPC_SC_SPC_LP_MODE_SHIFT)
@@ -96,7 +96,7 @@
 #define SPC_LPREQ_CFG_LPREQOE(x)                 (((x) << SPC_LPREQ_CFG_LPREQOE_SHIFT) & SPC_LPREQ_CFG_LPREQOE_MASK)
 
 #define SPC_LPREQ_CFG_LPREQPOL_SHIFT             (1)
-#define SPC_LPREQ_CFG_LPREQPOL_MASK              (0x01)
+#define SPC_LPREQ_CFG_LPREQPOL_MASK              (0x01 << SPC_LPREQ_CFG_LPREQPOL_SHIFT)
 #define SPC_LPREQ_CFG_LPREQPOL(x)                (((x) << SPC_LPREQ_CFG_LPREQPOL_SHIFT) & SPC_LPREQ_CFG_LPREQPOL_MASK)
 
 #define SPC_LPREQ_CFG_LPREQOV_SHIFT              (2)
@@ -195,7 +195,7 @@
 #define SPC_ACTIVE_CFG_SYS_LVDE(x)               (((x) << SPC_ACTIVE_CFG_SYS_LVDE_SHIFT) & SPC_ACTIVE_CFG_SYS_LVDE_MASK)
 
 #define SPC_ACTIVE_CFG_IO_LVDE_SHIFT             (26)
-#define SPC_ACTIVE_CFG_IO_LVDE_MASK              (0x01)
+#define SPC_ACTIVE_CFG_IO_LVDE_MASK              (0x01 << SPC_ACTIVE_CFG_IO_LVDE_SHIFT)
 #define SPC_ACTIVE_CFG_IO_LVDE(x)                (((x) << SPC_ACTIVE_CFG_IO_LVDE_SHIFT) & SPC_ACTIVE_CFG_IO_LVDE_MASK)
 
 #define SPC_ACTIVE_CFG_CORE_HVDE_SHIFT           (27)
@@ -207,7 +207,7 @@
 #define SPC_ACTIVE_CFG_SYS_HVDE(x)               (((x) << SPC_ACTIVE_CFG_SYS_HVDE_SHIFT) & SPC_ACTIVE_CFG_SYS_HVDE_MASK)
 
 #define SPC_ACTIVE_CFG_IO_HVDE_SHIFT             (29)
-#define SPC_ACTIVE_CFG_IO_HVDE_MASK              (0x01)
+#define SPC_ACTIVE_CFG_IO_HVDE_MASK              (0x01 << SPC_ACTIVE_CFG_IO_HVDE_SHIFT)
 #define SPC_ACTIVE_CFG_IO_HVDE(x)                (((x) << SPC_ACTIVE_CFG_IO_HVDE_SHIFT) & SPC_ACTIVE_CFG_IO_HVDE_MASK)
 
 /* Active Power Mode Configuration 1 (ACTIVE_CFG1) */
@@ -451,7 +451,7 @@
 /* LDO_CORE Configuration (CORELDO_CFG) */
 
 #define SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_SHIFT (16)
-#define SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_MASK  (0x01)
+#define SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_MASK  (0x01 << SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_SHIFT)
 #define SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE(x)    (((x) << SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_SHIFT) & SPC_CORELDO_CFG_DPDOWN_PULLDOWN_DISABLE_MASK)
 
 /* LDO_SYS Configuration (SYSLDO_CFG) */
@@ -471,7 +471,7 @@
 #define SPC_DCDC_CFG_FREQ_CNTRL(x)               (((x) << SPC_DCDC_CFG_FREQ_CNTRL_SHIFT) & SPC_DCDC_CFG_FREQ_CNTRL_MASK)
 
 #define SPC_DCDC_CFG_BLEED_EN_SHIFT              (19)
-#define SPC_DCDC_CFG_BLEED_EN_MASK               (0x01 <> SPC_DCDC_CFG_BLEED_EN_SHIFT)
+#define SPC_DCDC_CFG_BLEED_EN_MASK               (0x01 << SPC_DCDC_CFG_BLEED_EN_SHIFT)
 #define SPC_DCDC_CFG_BLEED_EN(x)                 (((x) << SPC_DCDC_CFG_BLEED_EN_SHIFT) & SPC_DCDC_CFG_BLEED_EN_MASK)
 
 /* DCDC Burst Configuration (DCDC_BURST_CFG) */
