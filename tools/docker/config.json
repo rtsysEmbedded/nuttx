@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+
+  "image": {
+    "apt_packages": [
+      "bison",
+      "build-essential",
+      "ca-certificates",
+      "cmake",
+      "curl",
+      "file",
+      "flex",
+      "genromfs",
+      "git",
+      "gperf",
+      "jq",
+      "kconfig-frontends-nox",
+      "libncurses-dev",
+      "ninja-build",
+      "python3",
+      "python3-kconfiglib",
+      "unzip",
+      "util-linux",
+      "xxd",
+      "xz-utils"
+    ],
+    "toolchain": {
+      "description": "Arm GNU Toolchain (bare-metal arm-none-eabi). Host archive is selected from the build machine CPU.",
+      "version": "13.3.rel1",
+      "target": "arm-none-eabi",
+      "url_template": "https://developer.arm.com/-/media/Files/downloads/gnu/{version}/binrel/arm-gnu-toolchain-{version}-{host}-{target}.tar.xz",
+      "host_map": {
+        "x86_64": "x86_64",
+        "amd64": "x86_64",
+        "aarch64": "aarch64",
+        "arm64": "aarch64"
+      },
+      "sha256": {
+        "x86_64": "95c011cee430e64dd6087c75c800f04b9c49832cc1000127a92a97f9c8d83af4",
+        "aarch64": "c8824bffd057afce2259f7618254e840715f33523a3d4e4294f471208f976764"
+      },
+      "install_dir": "/opt/toolchains/arm-none-eabi"
+    },
+    "apps": {
+      "description": "nuttx-apps revision matching the upstream base of this fork (apache/nuttx 2025-05-13).",
+      "repository": "https://github.com/apache/nuttx-apps.git",
+      "ref": "7b383d05625de11f4d8173252e37920aa905d423",
+      "install_dir": "/opt/nuttx-apps"
+    }
+  },
+
+  "build": {
+    "workspace": "/workspace/nuttx",
+    "apps_override_dir": "/workspace/apps",
+    "board_config": "frdm-mcxn947:nsh",
+    "configure_host_flag": "-l",
+    "jobs": 0,
+    "make_args": [],
+    "output_dir": "build-output",
+    "artifacts": [
+      "nuttx",
+      "nuttx.bin",
+      "nuttx.hex",
+      "nuttx.map",
+      ".config"
+    ]
+  }
+}
