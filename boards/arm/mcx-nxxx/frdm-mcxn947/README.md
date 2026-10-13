@@ -114,6 +114,10 @@ SDK revisions used:
    values as the SDK's `BOARD_BootClockPLL150M()` for FRDM-MCXN947: DCDC and
    core LDO in overdrive, flash RWSC = 3, SRAM at 1.2 V, FIRC 48 MHz,
    PLL0 SELI = 27, SELP = 13, N = 8, M = 50, P = 1 → 150 MHz.
+   `pll0_setup()` follows the SDK's `CLOCK_SetPLL0Freq()`: it decodes the
+   2-bit `APLLCTRL.SOURCE` field, sets `APLLLOCK_CNFG.LOCK_TIME` to
+   `(48 MHz / N) / 2000 + 300` = 3300, and waits until
+   `APLLCSR.APLL_LOCK` = 1 before MAIN_CLK is switched to PLL0.
 5. **Builds.** `frdm-mcxn947:nsh` (Make and CMake) and `frdm-mcxn236:nsh`
    (regression) build with zero warnings. All new and changed C and header
    files pass `tools/nxstyle`.
@@ -129,21 +133,10 @@ level, but they must be checked during hardware bring-up.
    The two boards have the same core, clock (150 MHz) and flash wait-states,
    but the value has not been calibrated on the N947. Calibrate it with
    `CONFIG_EXAMPLES_CALIB_UDELAY`.
-3. **Shared PLL0 setup issues (`nxxx_clockconfig.c`, affect N236 too):**
-   - The PLL lock wait loop is inverted: `while ((APLLCSR & APLL_LOCK) != 0)`.
-     The SDK waits while the PLL is *not* locked, so NuttX can switch
-     MAIN_CLK to PLL0 before it has locked.
-   - The PLL source decode `clksrc & SCG_APLLCTRL_SOURCE_MASK >>
-     SCG_APLLCTRL_SOURCE_SHIFT` has an operator-precedence bug. It reads
-     APLLCTRL bit 0 instead of the 2-bit `SOURCE` field (bits 26:25). As a
-     result the lock time is computed for a 24 MHz input instead of the
-     48 MHz FIRC: 1800 instead of 3300 reference cycles.
-   - `SCG_APLLCTRL_SOURCE_MASK` in `nxxx_scg.h` is 1 bit wide. The SDK
-     field is 2 bits (`0x0600_0000`).
-4. **LPUART instance numbering.** The `mcx-nxxx` Kconfig offers LPUART1–9,
+3. **LPUART instance numbering.** The `mcx-nxxx` Kconfig offers LPUART1–9,
    but the driver (`nxxx_lpuart.c`, `nxxx_lowputc.c`) implements LPUART0–7.
    FlexComm 8/9 (N947 only) are not wired into the driver yet. The console
    (LPUART4) is not affected.
-5. **Not used yet:** CPU1, SRAMX, the on-board LEDs and buttons, and the
+4. **Not used yet:** CPU1, SRAMX, the on-board LEDs and buttons, and the
    peripherals that only the N947 has (ENET, USB0 FS, uSDHC, FlexSPI, DAC,
    OPAMP, PowerQuad, NPU, FlexComm 8/9, …).

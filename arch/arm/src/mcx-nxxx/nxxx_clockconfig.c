@@ -117,7 +117,7 @@ int pll0_setup(struct pll_params_s *params)
 {
   uint32_t inclk;
   uint32_t outclk;
-  uint32_t prediv;
+  uint32_t prediv = 1;
   uint32_t cnfg;
   uint32_t clksrc;
 
@@ -150,7 +150,7 @@ int pll0_setup(struct pll_params_s *params)
   /* Configure lock time for APLL */
 
   clksrc = getreg32(NXXX_SCG_APLLCTRL);
-  clksrc = clksrc & SCG_APLLCTRL_SOURCE_MASK >> SCG_APLLCTRL_SOURCE_SHIFT;
+  clksrc = (clksrc & SCG_APLLCTRL_SOURCE_MASK) >> SCG_APLLCTRL_SOURCE_SHIFT;
 
   switch (clksrc)
     {
@@ -190,7 +190,7 @@ int pll0_setup(struct pll_params_s *params)
 
   /* Wait for APLL lock */
 
-  while ((getreg32(NXXX_SCG_APLLCSR) & SCG_APLLCSR_APLL_LOCK_MASK) != 0)
+  while ((getreg32(NXXX_SCG_APLLCSR) & SCG_APLLCSR_APLL_LOCK_MASK) == 0)
     {
     }
 
